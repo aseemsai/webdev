@@ -1,8 +1,43 @@
 /* Text Colors */
 .text-primary {
-    color: #50c878;
+  color: #50c878;
 }
 
 .text-secondary {
-    color: #067bc8;
+  color: #067bc8;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 30px;
+  background-color: #50c878;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  font-size: 1.1em;
+}
+
+.btn-primary {
+  background-color: #50c878;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #067bc8;
+  color: #fff;
+}
+
+.btn-dark {
+  background-color: #333333;
+  color: #fff;
+}
+
+.btn-light {
+  background-color: #ffffff;
+  color: #333;
 }
