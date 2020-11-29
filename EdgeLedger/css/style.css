@@ -133,3 +133,65 @@ img {
   margin-bottom: 15px;
 }
 
+/* Cases */
+.cases img:hover {
+  opacity: 0.7;
+}
+
+.team img {
+  border-radius: 50%;
+  border: none;
+}
+
+/* Contact */
+.contact h2 {
+  font-weight: 400;
+}
+
+.callback-form {
+  width: 100%;
+  padding: 30px;
+}
+
+.callback-form label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.callback-form input {
+  width: 100%;
+  padding: 10px;
+  height: 40px;
+  border: none;
+}
+
+.callback-form input:focus {
+  outline-color: #28a745;
+  outline-width: 1px;
+  outline-style: solid;
+}
+
+.callback-form .btn {
+  width: 15%;
+  margin-top: 20px;
+  font-size: medium;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 20vh;
+}
+
+.footer a {
+  color: #fff;
+  margin-right: 10px;
+}
+
+.footer a:hover {
+  color: #28a745;
+}
