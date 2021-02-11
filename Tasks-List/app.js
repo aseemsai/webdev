@@ -18,6 +18,35 @@ function loadEventListeners() {
     clearBtn.addEventListener('click', clearTasks);
     // Filter Tasks Event
     filter.addEventListener('keyup', filterTask);
+    // DOM Content Update from Local Storage
+    document.addEventListener('DOMContentLoaded', getTasks);
+}
+
+// List tasks from Local Storage
+function getTasks() {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.forEach((task) => {
+        // Create li element
+        const li = document.createElement('li');
+        // Add class
+        li.className = 'collection-item';
+        li.appendChild(document.createTextNode(task));
+        // Create new link element
+        const link = document.createElement('a');
+        link.className = 'delete-item secondary-content';
+        // Add inner html
+        link.innerHTML = '<i class="fa fa-remove"></i>';
+        li.appendChild(link);
+
+        // Add the list to the task list
+        taskList.append(li);
+    })
 }
 
 // Add Task
@@ -74,9 +103,29 @@ function removeTask(e) {
         if (confirm("Are you sure?")) {
             e.target.parentElement.parentElement.remove();
         }
+        // Remove task item from local storage
+        removeFromLocalStorage(e.target.parentElement.parentElement);
     }
 
     e.preventDefault();
+}
+
+// Remove the task item from Local Storage
+function removeFromLocalStorage(taskItem) {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.forEach((task, index) => {
+        if (taskItem.textContent === task) {
+            tasks.splice(index, 1);
+        }
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 // Clear Tasks
@@ -87,6 +136,13 @@ function clearTasks() {
             taskList.removeChild(taskList.firstChild);
         }
     }
+    // Clear from Local Storage
+    clearTasksFromLocalStorage();
+}
+
+// Clear all items from local storage
+function clearTasksFromLocalStorage() {
+    localStorage.clear();
 }
 
 // Filter Task
