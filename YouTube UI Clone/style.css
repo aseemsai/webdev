@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 7vh;
+  height: 9vh;
   padding: 25px;
 }
 
@@ -52,10 +52,11 @@ body {
 }
 
 .header-search input {
-  width: 500px;
+  width: 45vw;
   margin: 0;
   padding: 10px;
   border: none;
+  font-size: 1.1em;
 }
 
 .header-search button {
