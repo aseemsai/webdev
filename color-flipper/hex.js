@@ -1,0 +1,22 @@
+const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+// Get the target elements
+
+const btn = document.getElementById('btn');
+const color = document.querySelector(".color");
+
+// Add event listener to the button
+
+btn.addEventListener('click', () => {
+    let hexColor = "#";
+    for (let index = 0; index < 6; index++) {
+        // Get random numbers and form a hex color code
+        hexColor += hex[getRandomNumber()];
+    }
+    document.body.style.backgroundColor = hexColor;
+    color.textContent = hexColor;
+})
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * hex.length);
+}
