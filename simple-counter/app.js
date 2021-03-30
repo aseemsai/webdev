@@ -1,25 +1,34 @@
 // Declare necessary variables
-const decreaseBtn = document.querySelector("btn decrease");
-const resetBtn = document.querySelector("btn reset");
-const increaseBtn = document.querySelector("btn increase");
 const counterValue = document.getElementById("value");
-const btnContainer = document.querySelector(".button-container");
+const btns = document.querySelectorAll(".btn");
 
-// Load Event Listeners
-const loadEventListeners = () => {
-    btnContainer.addEventListener('click', evaluateNumber);
+// Set initial count
+let count = 0;
+
+btns.forEach((item) => {
+    item.addEventListener('click', evaluateCounter);
+});
+
+function evaluateCounter(e) {
+    const targetClasses = e.currentTarget.classList;
+    if (targetClasses.contains("decrease")) {
+        count--;
+    } else if (targetClasses.contains("reset")) {
+        count = 0;
+    } else {
+        count++;
+    }
+
+    counterValue.textContent = count;
+    setCountColor();
 }
 
-
-// Evaluate Number Function
-const evaluateNumber = (e) => {
-    if (e.target === decreaseBtn) {
-        console.log(counterValue);
+function setCountColor() {
+    if (count < 0) {
+        counterValue.style.color = 'var(--clr-red-dark)';
+    } else if (count === 0) {
+        counterValue.style.color = 'var(--clr-grey-1)';
     } else {
-        
+        counterValue.style.color = 'var(--clr-green-dark)';
     }
 }
-
-
-// Call Event Listeners
-loadEventListeners();
