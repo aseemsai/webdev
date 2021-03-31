@@ -240,6 +240,8 @@ main {
 }
 #info {
   margin-bottom: 0.75rem;
+  height: 10vh;
+  overflow: hidden;
 }
 .prev-btn,
 .next-btn {
