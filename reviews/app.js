@@ -11,7 +11,7 @@ const reviews = [
     },
     {
         id: 2,
-        name: "anna johnson",
+        name: "anna Hello",
         job: "web designer",
         img:
             "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg",
