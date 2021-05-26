@@ -74,7 +74,7 @@ td {
 
 .btn {
   padding: 5px;
-  background-color: #81aff9;
+  background: linear-gradient(to bottom right, #81aff9, white); 
   font-weight: bold;
   border: none;
 }

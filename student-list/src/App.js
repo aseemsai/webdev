@@ -7,17 +7,17 @@ function App() {
     {
       id: 1,
       name: 'Aseem',
-      age: 27
+      age: '27'
     },
     {
       id: 2,
       name: 'Alisha',
-      age: 28
+      age: '28'
     },
     {
       id: 3,
       name: 'Ronit',
-      age: 28
+      age: '28'
     }
   ])
 
@@ -38,7 +38,9 @@ function App() {
     setMyList(newList)
     setName('')
     setAge('')
-    console.log(myList)
+
+    e.preventDefault()
+    
   }
   return (
     <div className="App">
@@ -70,11 +72,11 @@ function App() {
           </table>
         </div>
         <div className="add-form">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h3>Enter Student Details</h3><br />
             <strong>Name:</strong><br /><input type="text" name="name" id="name" value={name} onChange={(e) => { setName(e.target.value) }} /><br />
-            <strong>Age:</strong><br /><input type="number" name="age" id="age" value={age} onChange={(e) => { setAge(e.target.value) }} /><br />
-            <button type="submit" className="btn" onClick={handleSubmit}>Submit</button>
+            <strong>Age:</strong><br /><input type="text" name="age" id="age" value={age} onChange={(e) => { setAge(e.target.value) }} /><br />
+            <button type="submit" className="btn">Submit</button>
           </form>
         </div>
       </div>
