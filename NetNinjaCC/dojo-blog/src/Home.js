@@ -3,23 +3,31 @@ import { useState } from 'react';
 const Home = () => {
 
     // Define State
-    const [name, setName] =
-        useState('Mario');
-    const [age, setAge] =
-        useState(25);
+    const [blogs, setBlogs] = useState([
+        { title: "First Blog", body: "lorem ipsum ...", author: "mario", id: 1 },
+        { title: "Welcome Party!", body: "lorem ipsum ...", author: "luigi", id: 2 },
+        { title: "Afterwards..", body: "lorem ipsum ...", author: "mario", id: 3 }
+    ])
 
-    // Define a function
-    const handleClick = (e) => {
-        setName('Luigi')
-        setAge(34)
+    const handleSubmit = () => {
+        console.log("Click entered.")
     }
-    return (
-        <div>
-            <p>This is the home page of the blog</p>
-            <p>Author: {name} is {age} {age === 1 ? ' year ' : ' years '} old.</p>
-            <button onClick={handleClick}>Click Me</button>
-        </div>
+    // Define a function
 
+    return (
+        <div className="home">
+            {
+                blogs.map((blog) => (
+                    <div className="blog-preview">
+                        <h1>{blog.title}</h1>
+                        <p>Author: {blog.author}</p>
+                    </div>
+                ))
+            }
+            <form action={handleSubmit} method="post">
+                <label htmlFor="author">Author:</label>
+            </form>
+        </div>
     );
 }
 
