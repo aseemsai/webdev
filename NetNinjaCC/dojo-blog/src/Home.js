@@ -3,8 +3,10 @@ import { useState } from 'react';
 const Home = () => {
 
     // Define State
-    const [name, setName] = useState('Mario');
-    const [age, setAge] = useState(25);
+    const [name, setName] =
+        useState('Mario');
+    const [age, setAge] =
+        useState(25);
 
     // Define a function
     const handleClick = (e) => {
