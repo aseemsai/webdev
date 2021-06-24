@@ -19,7 +19,7 @@
 
 .navbar h1 {
   font-size: 1.6em;
-  margin: 10px 40px;
+  margin: 10px 60px;
   cursor: pointer;
 }
 
@@ -50,6 +50,26 @@ button {
 }
 
 .home {
-  margin: 10px;
-  padding: 5px;
+  margin-top: 50px;
+  margin-left: 70px;
+  padding: 20px;
+}
+
+.blog-preview {
+  margin-top: 10px;
+  padding: 10px 0;
+  width: 90%;
+  text-align: justify;
+}
+
+.blog-preview h2 {
+  color: #477f65;
+}
+
+.blog-preview:hover {
+  box-shadow: 2px 3px 10px #ffe9f3;
+}
+
+.blog-list h3 {
+  font-size: 2em;
 }

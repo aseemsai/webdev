@@ -1,32 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
 
     // Define State
-    const [blogs, setBlogs] = useState([
-        { title: "First Blog", body: "lorem ipsum ...", author: "mario", id: 1 },
-        { title: "Welcome Party!", body: "lorem ipsum ...", author: "luigi", id: 2 },
-        { title: "Afterwards..", body: "lorem ipsum ...", author: "mario", id: 3 }
-    ])
-
-    const handleSubmit = () => {
-        console.log("Click entered.")
-    }
+    // eslint-disable-next-line
+    const [blogs, setBlogs] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     // Define a function
+
+    useEffect(() => {
+        setTimeout(() => {
+            fetch("http://localhost:8000/blogs")
+                .then(res => {
+                    if (!res.ok) {
+                        throw Error('Could not retrieve data from the server. Please try again.')
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    setBlogs(data);
+                    setIsLoading(false);
+                    setError(null);
+                })
+                .catch(err => {
+                    setError(err.message);
+                    setIsLoading(false);
+                })
+        }, 1000
+        )
+    }, [])
 
     return (
         <div className="home">
-            {
-                blogs.map((blog) => (
-                    <div className="blog-preview">
-                        <h1>{blog.title}</h1>
-                        <p>Author: {blog.author}</p>
-                    </div>
-                ))
-            }
-            <form action={handleSubmit} method="post">
-                <label htmlFor="author">Author:</label>
-            </form>
+            {error && <div>{error}</div>}
+            {isLoading && <div>Loading...</div>}
+            {blogs && <BlogList blogs={blogs} />}
         </div>
     );
 }
