@@ -1,36 +1,12 @@
-import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
+import useFetch from './useFetch';
 
 const Home = () => {
 
     // Define State
     // eslint-disable-next-line
-    const [blogs, setBlogs] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-    // Define a function
+    const { data: blogs, isLoading, error } = useFetch("http://localhost:8000/blogs")
 
-    useEffect(() => {
-        setTimeout(() => {
-            fetch("http://localhost:8000/blogs")
-                .then(res => {
-                    if (!res.ok) {
-                        throw Error('Could not retrieve data from the server. Please try again.')
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    setBlogs(data);
-                    setIsLoading(false);
-                    setError(null);
-                })
-                .catch(err => {
-                    setError(err.message);
-                    setIsLoading(false);
-                })
-        }, 1000
-        )
-    }, [])
 
     return (
         <div className="home">
