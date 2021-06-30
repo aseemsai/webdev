@@ -7,8 +7,10 @@ const useFetch = (url) => {
     // Define a function
 
     useEffect(() => {
+        // Custom Hook Cleanup
+        const abortCont = new AbortController();
         setTimeout(() => {
-            fetch(url)
+            fetch(url, { signal: abortCont.signal })
                 .then(res => {
                     if (!res.ok) {
                         throw Error('Could not retrieve data from the server. Please try again.')
@@ -21,11 +23,18 @@ const useFetch = (url) => {
                     setError(null);
                 })
                 .catch(err => {
-                    setError(err.message);
-                    setIsLoading(false);
+                    if (err.name === 'AbortError') {
+                        console.log('Fetch Aborted');
+                    } else {
+                        setError(err.message);
+                        setIsLoading(false);
+                    }
+
                 })
         }, 1000
         )
+
+        return () => abortCont.abort();
     }, [url])
 
     return { data, isLoading, error }

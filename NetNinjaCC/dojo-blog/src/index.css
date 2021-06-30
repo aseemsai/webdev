@@ -17,10 +17,11 @@
   justify-content: space-between;
 }
 
-.navbar h1 {
-  font-size: 1.6em;
+.navbar h1 a {
   margin: 10px 60px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .navbar .links ul {
@@ -72,4 +73,6 @@ button {
 
 .blog-list h3 {
   font-size: 2em;
+  color: #34634d;
+  font-weight: bolder;
 }
